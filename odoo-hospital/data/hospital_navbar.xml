@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hospital_doctor_icon" model="hospital.dashboard">
+            <field name="name">Doctores</field>
+            <field name="model">hospital.doctor</field>
+            <field name="tipo">doctor</field>
+        </record>
+    </data>
+</odoo>

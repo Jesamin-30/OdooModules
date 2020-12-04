@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+hospital_hospital,hospital_hospital,model_hospital_hospital,,1,1,1,1
+hospital_dashboard,hospital_dashboard,model_hospital_dashboard,,1,1,1,1
+hospital_doctor,hospital_doctor,model_hospital_doctor,,1,1,1,1

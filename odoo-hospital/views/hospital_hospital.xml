@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="hospital_config" name="Odoo Hospital" sequence="1" />
+    <menuitem id="hospital_logistica" name="Logistica" sequence="2" parent="odoo-hospital.hospital_config" />
+
+    <record id="view_base_hospital_hospital_tree" model="ir.ui.view">
+        <field name="name">hospital.hospital.tree</field>
+        <field name="model">hospital.hospital</field>
+        <field name="arch" type="xml">
+            <tree string="Hospital Tree">
+                <field name="name"/>
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hospital_hospital_form_view">
+        <field name="name">hospital.hospital.form</field>
+        <field name="model">hospital.hospital</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="descripcion" />
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_hospital" model="ir.actions.act_window">
+        <field name="name">Hospitales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.hospital</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem action="action_hospital_hospital" id="hospital_hospital_menu_id" parent="hospital_config"/>
+
+</odoo>

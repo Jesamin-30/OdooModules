@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista Kanba -->
+    <record model="ir.actions.act_window" id="action_hospital_dashboard">
+        <field name="name">Dashboard</field>
+        <field name="res_model">hospital.dashboard</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Nuevo
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mag2_restapi_list_kanban">
+        <field name="name">Dashboard Kanban</field>
+        <field name="model">hospital.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="tipo" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click_edit
+                        oe_semantic_html_override oe_kanban_card ">
+                            <div t-attf-class="oe_kanban_content">
+                                <t t-if="record.tipo.raw_value == 'doctor'">
+                                    <img alt="Products" t-att-src="_s + '/odoo-hospital/static/img/doctor.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
+                                </t>
+                            </div>
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                            <br />
+                            <strong>Total : <field name="total" /> </strong>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="mag2_restapi_list_form">
+        <field name="name">hospital.dashboard.form</field>
+        <field name="model">hospital.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Form">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="action" name="%(odoo-hospital.action_hospital_doctor)d" icon="fa-cloud" attrs="{'invisible': [('tipo', '!=', 'doctor')]}">
+                            <div class="o_stat_info">
+                                <field name="total" class="o_stat_value"/>
+                                <span class="o_stat_text">Doctores</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="tipo" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem action="action_hospital_dashboard" id="hospital_dashboard" parent="odoo-hospital.hospital_config" sequence="0"/>
+</odoo>
