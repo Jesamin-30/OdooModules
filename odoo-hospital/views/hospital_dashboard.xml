@@ -22,10 +22,26 @@
                         <div t-attf-class="oe_kanban_global_click_edit
                         oe_semantic_html_override oe_kanban_card ">
                             <div t-attf-class="oe_kanban_content">
-                                <t t-if="record.tipo.raw_value == 'doctor'">
-                                    <img alt="Products" t-att-src="_s + '/odoo-hospital/static/img/doctor.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
+
+                                <t t-if="record.tipo.raw_value == 'hospital'">
+                                    <img alt="Hospital" t-att-src="_s + '/odoo-hospital/static/img/hospital.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
                                 </t>
+
+                                <t t-if="record.tipo.raw_value == 'doctor'">
+                                    <img alt="Hospital" t-att-src="_s + '/odoo-hospital/static/img/doctor.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
+                                </t>
+
+                                <t t-if="record.tipo.raw_value == 'paciente'">
+                                    <img alt="Hospital" t-att-src="_s + '/odoo-hospital/static/img/paciente.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
+                                </t>
+
+                                <t t-if="record.tipo.raw_value == 'cita'">
+                                    <img alt="Hospital" t-att-src="_s + '/odoo-hospital/static/img/cita.png'" class="o_kanban_image oe_kanban_avatar_smallbox" />
+                                </t>
+
                             </div>
+                           
+
                             <strong>
                                 <field name="name"/>
                             </strong>
@@ -45,12 +61,35 @@
             <form string="Hospital Form">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+
+                        <button class="oe_stat_button" type="action" name="%(odoo-hospital.action_hospital_hospital)d" icon="fa-cloud" attrs="{'invisible': [('tipo', '!=', 'hospital')]}">
+                            <div class="o_stat_info">
+                                <field name="total" class="o_stat_value"/>
+                                <span class="o_stat_text">Hospitales</span>
+                            </div>
+                        </button>
+
                         <button class="oe_stat_button" type="action" name="%(odoo-hospital.action_hospital_doctor)d" icon="fa-cloud" attrs="{'invisible': [('tipo', '!=', 'doctor')]}">
                             <div class="o_stat_info">
                                 <field name="total" class="o_stat_value"/>
                                 <span class="o_stat_text">Doctores</span>
                             </div>
                         </button>
+
+                        <button class="oe_stat_button" type="action" name="%(odoo-hospital.action_hospital_paciente)d" icon="fa-cloud" attrs="{'invisible': [('tipo', '!=', 'paciente')]}">
+                            <div class="o_stat_info">
+                                <field name="total" class="o_stat_value"/>
+                                <span class="o_stat_text">Pacientes</span>
+                            </div>
+                        </button>
+
+                        <button class="oe_stat_button" type="action" name="%(odoo-hospital.action_hospital_cita)d" icon="fa-cloud" attrs="{'invisible': [('tipo', '!=', 'cita')]}">
+                            <div class="o_stat_info">
+                                <field name="total" class="o_stat_value"/>
+                                <span class="o_stat_text">Citas</span>
+                            </div>
+                        </button>
+
                     </div>
                     <group>
                         <field name="tipo" />

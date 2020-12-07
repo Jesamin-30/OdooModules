@@ -12,9 +12,12 @@ class HospitalDashboard(models.Model):
 
     def _generate_count(self):
         for record in self:
+            total = 0
             model = record.model
-            if model:
-                count = self.env[str(model)].search_count([('id_hospital', '!=', False)])
-                record.total = count
+            if model == "hospital.hospital":
+                total = self.env[str(model)].search_count(
+                    [('id', '!=', False)])
             else:
-                record.total = 0
+                total = self.env[str(model)].search_count(
+                    [('id_hospital', '!=', False)])
+            record.total = total

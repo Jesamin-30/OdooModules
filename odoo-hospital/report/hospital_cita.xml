@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report 
+        id="hospitalCitaReporte"
+        string="Citas Reporte"
+        model="hospital.cita.wizard"
+        report_type="qweb-pdf"
+        name="odoo-hospital.citaReporteLayout"
+        file="odoo-hospital.citaReporteLayout"
+        menu="False"
+        print_report_name="'Reporte %s %s de citas' % (object.date, object.country_id.name)" />
+
+    <template id="odoo-hospital.citaReporteLayout">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page" style="font-size:18px">
+                    <div class="row">
+                        <div class="col-md-12" align="center">
+                            <h2>Reporte Citas </h2>
+                            <h4>De: <t t-esc="fecha_inicio"></t> Hasta: <t t-esc="fecha_fin"></t> </h4>
+                            <table class="table mt16">
+                                <thead class="thead-dark">
+                                    <tr >
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Doctor</th>
+                                        <th scope="col">Paciente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="records" t-as="record">
+                                        <tr >
+                                            <td>
+                                                <t t-esc="record['name']" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['descripcion']" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['doctor_id'][1]" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="record['paciente_id'][1]" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

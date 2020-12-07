@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_base_hospital_cita_tree" model="ir.ui.view">
+        <field name="name">hospital.cita.tree</field>
+        <field name="model">hospital.cita</field>
+        <field name="arch" type="xml">
+            <tree string="Cita Tree">
+                <field name="name"/>
+                <field name="descripcion"/> 
+                <field name="activo"/>
+                <field name="fecha"/> 
+                <field name="doctor_id"/> 
+                <field name="paciente_id"/> 
+                <field name="id_hospital" string="Hospital" attrs="{'invisible': [('id_hospital', '=', False)]}" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hospital_cita_form_view">
+        <field name="name">hospital.cita.form</field>
+        <field name="model">hospital.cita</field>
+        <field name="arch" type="xml">
+            <form string="Cita Form">
+                <sheet>
+                    <group>
+                    <field name="name"/>
+                    <field name="descripcion"/> 
+                    <field name="activo"/>
+                    <field name="fecha"/> 
+                    <field name="doctor_id"/> 
+                    <field name="paciente_id"/> 
+                    <field name="id_hospital"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_cita" model="ir.actions.act_window">
+        <field name="name">Citas</field>
+        <field name="res_model">hospital.cita</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear un registro para un nuevo cita
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_cita_menu" action="action_hospital_cita" parent="odoo-hospital.hospital_logistica" name="Citas"/>
+</odoo>

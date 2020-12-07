@@ -13,6 +13,10 @@
         'security/ir.model.access.csv',
         'views/hospital_hospital.xml',
         'views/hospital_doctor.xml',
+        'views/hospital_paciente.xml',
+        'views/hospital_cita.xml',
         'views/hospital_dashboard.xml',
+        'wizard/hospital_cita.xml',
+        'report/hospital_cita.xml',
     ],
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="hospital_reportes_wizard" parent="hospital_config" name="Reportes"/>
+    <data>
+        <record model="ir.ui.view" id="hospital_cita_wizard_form_view">
+            <field name="name">hospital.cita.wizard.form</field>
+            <field name="model">hospital.cita.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Cita Reporte Form">
+                    <sheet>
+                        <group>
+                            <field name="fecha_inicio"/> 
+                            <field name="fecha_fin"/> 
+                            <field name="formato" />
+                            <field name="id_hospital" />
+                        </group>
+
+                    </sheet>
+                    <footer>
+                        <button name="action_cita_reporte" string="Report" type="object" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+
+    <record id="action_hospital_cita_wizard" model="ir.actions.act_window">
+        <field name="name">Cita Reportes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.cita.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_hospital_cita_wizard" id="hospital_cita_wizard_menu_id" parent="hospital_reportes_wizard" name="Citas"/>
+
+</odoo>

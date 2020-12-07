@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_base_hospital_paciente_tree" model="ir.ui.view">
+        <field name="name">hospital.paciente.tree</field>
+        <field name="model">hospital.paciente</field>
+        <field name="arch" type="xml">
+            <tree string="Paciente Tree">
+                <field name="name"/>
+                <field name="genero"/>
+                <field name="sintomas"/>
+                <field name="id_hospital" string="Hospital" attrs="{'invisible': [('id_hospital', '=', False)]}" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hospital_paciente_form_view">
+        <field name="name">hospital.paciente.form</field>
+        <field name="model">hospital.paciente</field>
+        <field name="arch" type="xml">
+            <form string="Paciente Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="genero"/>
+                        <field name="sintomas"/>
+                        <field name="id_hospital"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_paciente" model="ir.actions.act_window">
+        <field name="name">Pacientes</field>
+        <field name="res_model">hospital.paciente</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear un registro para un nuevo paciente
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_paciente_menu" action="action_hospital_paciente" parent="odoo-hospital.hospital_logistica" name="Pacientes"/>
+</odoo>

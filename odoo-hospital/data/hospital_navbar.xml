@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="hospital_hospital_icon" model="hospital.dashboard">
+            <field name="name">Hospitales</field>
+            <field name="model">hospital.hospital</field>
+            <field name="tipo">hospital</field>
+        </record>
+
         <record id="hospital_doctor_icon" model="hospital.dashboard">
             <field name="name">Doctores</field>
             <field name="model">hospital.doctor</field>
             <field name="tipo">doctor</field>
         </record>
+
+        <record id="hospital_paciente_icon" model="hospital.dashboard">
+            <field name="name">Pacientes</field>
+            <field name="model">hospital.paciente</field>
+            <field name="tipo">paciente</field>
+        </record>
+
+        <record id="hospital_cita_icon" model="hospital.dashboard">
+            <field name="name">Citas</field>
+            <field name="model">hospital.cita</field>
+            <field name="tipo">cita</field>
+        </record>
+
     </data>
 </odoo>
